@@ -10,8 +10,12 @@ from datetime import date
 class DoubanSpider(Spider):
     name = "douban"
     allowed_domains = ["douban.com"]
+
+    # 后续需要用start_request()重写  参考：https://scrapy-chs.readthedocs.org/zh_CN/0.22/topics/spiders.html
     start_urls = [
         "http://shanghai.douban.com/events/week-all?start=0",
+        "http://shanghai.douban.com/events/week-all?start=10",
+        "http://shanghai.douban.com/events/week-all?start=20",
     ]
 
     def parse(self, response):
