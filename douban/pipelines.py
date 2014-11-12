@@ -2,13 +2,7 @@
 from twisted.enterprise import adbapi
 import MySQLdb
 import MySQLdb.cursors
-
 from scrapy import log
-# Define your item pipelines here
-#
-# Don't forget to add your pipeline to the ITEM_PIPELINES setting
-# See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
-
 
 class DouBanPipeline(object):
     def __init__(self):
