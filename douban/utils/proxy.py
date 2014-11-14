@@ -14,6 +14,9 @@ def get_use_proxy():
         tmp = check_proxy(r[0], int(r[1]))
         if type(tmp) == dict:
             proxy_list.append(tmp)
+    proxy_list.append(get_local_ip())
+    cur.close()
+    conn.close()
     return proxy_list
 
 
@@ -29,6 +32,8 @@ def check_proxy(ip, port):
     s.close()
 
 
+def get_local_ip():
+    return {'ip': '180.166.126.90', 'port': 80}
 
 if __name__ == '__main__':
-    get_use_proxy()
+    get_local_ip()

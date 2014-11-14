@@ -14,6 +14,7 @@ class DoubanItem(scrapy.Item):
     title = scrapy.Field()
     start_date = scrapy.Field()
     end_date = scrapy.Field()
+    time = scrapy.Field()
     event_time = scrapy.Field()
     address = scrapy.Field()
     cost = scrapy.Field()

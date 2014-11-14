@@ -20,11 +20,11 @@ class DouBanPipeline(object):
 
     def _conditional_insert(self, db, item):
         """把去重过的数据写入数据库"""
-        insert_sql = "insert into act_info values (%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+        insert_sql = "insert into act_info values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
 
         if item['act_id'] not in self.act_ids:
                 db.execute(insert_sql, (item['act_id'], item['title'], item['start_date'], item['end_date'],
-                                        item['event_time'], item['address'], item['cost'], item['pic'],
+                                        item['time'], item['event_time'], item['address'], item['cost'], item['pic'],
                                         item['create_time']))       # 插入数据库中没有的数据
         else:
             log.msg("%s is in the pool" % item['act_id'], level=log.INFO)

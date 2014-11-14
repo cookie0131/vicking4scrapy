@@ -14,5 +14,5 @@ class ProxyMiddleware(object):
         ip_list = self.proxy_list
         index = random.randint(0, len(ip_list)-1)
         request.meta['proxy'] = 'http://%s:%s' % (ip_list[index]['ip'], ip_list[index]['port'])
-        #log.msg('>>>>>>>>>>>> Proxy %s' % request.meta['proxy'])
+        # log.msg('>>>>>>>>>>>> Proxy %s' % request.meta['proxy'])
         # print '>>>>>>>>>>>> Proxy %s Request %s' % (request.meta['proxy'], request.url)

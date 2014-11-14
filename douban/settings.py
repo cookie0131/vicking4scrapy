@@ -21,7 +21,7 @@ ITEM_PIPELINES = {'douban.douban_pipelines.DouBanPipeline': 100,
                   'douban.proxy_pipelines.ProxyPipeline': 10}
 
 #日志级别 CRITICAL、 ERROR、WARNING、INFO、DEBUG
-LOG_LEVEL = 'INFO'
+LOG_LEVEL = 'ERROR'
 
 # 错误页面重试机制
 RETRY_ENABLED = True
@@ -29,7 +29,7 @@ RETRY_TIMES = 3
 RETRY_HTTP_CODES = [500, 502, 503, 504, 400, 408]
 
 COOKIES_ENABLED = False
-DOWNLOAD_DELAY = 2
+DOWNLOAD_DELAY = 2.5
 RANDOMIZE_DOWNLOAD_DELAY = True
 DOWNLOAD_TIMEOUT = 30
 
