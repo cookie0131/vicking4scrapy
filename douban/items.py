@@ -20,3 +20,10 @@ class DoubanItem(scrapy.Item):
     pic = scrapy.Field()
     create_time = scrapy.Field()
 
+
+class ProxyItem(scrapy.Item):
+    """IP代理的模型"""
+    ip = scrapy.Field()
+    port = scrapy.Field()
+    type = scrapy.Field()
+    status = scrapy.Field()

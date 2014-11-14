@@ -17,8 +17,11 @@ NEWSPIDER_MODULE = 'douban.spiders'
 #USER_AGENT = 'douban (+http://www.yourdomain.com)'
 
 # 调用Pipelines的开关
-ITEM_PIPELINES = {'douban.pipelines.DouBanPipeline': 1}
+ITEM_PIPELINES = {'douban.douban_pipelines.DouBanPipeline': 100,
+                  'douban.proxy_pipelines.ProxyPipeline': 10}
 
+#日志级别 CRITICAL、 ERROR、WARNING、INFO、DEBUG
+LOG_LEVEL = 'INFO'
 
 # 错误页面重试机制
 RETRY_ENABLED = True
@@ -26,7 +29,7 @@ RETRY_TIMES = 3
 RETRY_HTTP_CODES = [500, 502, 503, 504, 400, 408]
 
 COOKIES_ENABLED = False
-DOWNLOAD_DELAY = 3
+DOWNLOAD_DELAY = 2
 RANDOMIZE_DOWNLOAD_DELAY = True
 DOWNLOAD_TIMEOUT = 30
 
@@ -42,7 +45,7 @@ USER_AGENT_LIST = ['Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/5
 
 DOWNLOADER_MIDDLEWARES = {
     # 'scrapy.contrib.downloadermiddleware.httpproxy.HttpProxyMiddleware': 110,
-    # 'anzhan.middlewares.ProxyMiddleWare.ProxyMiddleware': 200,
+    'douban.middlewares.ProxyMiddleWare.ProxyMiddleware': 200,
     # 中间件将重试临时的问题    RETRY_ENABLED  RETRY_TIMES  RETRY_HTTP_CODES
     'douban.middlewares.RetryMiddleWare.RetryMiddlewareSubclass': 300,
     'douban.middlewares.UserAgentMiddleWare.RandomUserAgentMiddleware': 400,

@@ -6,24 +6,12 @@ from scrapy.selector import Selector
 from douban.items import DoubanItem
 from datetime import date
 from douban.utils.urls import get_url_list
-from scrapy import Request
 
 
-class DoubanSpider(Spider):
+class DouBanSpider(Spider):
     name = "douban"
     allowed_domains = ["douban.com"]
-
-    # 后续需要用start_request()重写  参考：https://scrapy-chs.readthedocs.org/zh_CN/0.22/topics/spiders.html
     start_urls = get_url_list()
-    # start_urls = ['http://shanghai.douban.com/events/week-all?start=0',
-    #               'http://shanghai.douban.com/events/week-all?start=10']
-
-    # def start_requests(self):
-    #     """增加REFER来避免被当成爬虫"""
-    #     requests = []
-    #     for item in self.start_urls:
-    #         requests.append(Request(url=item, headers={'Referer': 'http://shanghai.douban.com/'}))
-    #     return requests
 
     def parse(self, response):
         sel = Selector(response)

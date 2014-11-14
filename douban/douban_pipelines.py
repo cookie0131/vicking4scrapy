@@ -4,6 +4,7 @@ import MySQLdb
 import MySQLdb.cursors
 from scrapy import log
 
+
 class DouBanPipeline(object):
     def __init__(self):
         self.dbpool = adbapi.ConnectionPool('MySQLdb', db='douban', user='root', passwd='',
@@ -13,7 +14,8 @@ class DouBanPipeline(object):
     def process_item(self, item, spider):
         """pipeline默认调用
         不知道为什么，传过来的items在这里被自动拆分成item了"""
-        query = self.dbpool.runInteraction(self._conditional_insert, item)
+        if spider.name == 'douban':
+            query = self.dbpool.runInteraction(self._conditional_insert, item)
         return item
 
     def _conditional_insert(self, db, item):
